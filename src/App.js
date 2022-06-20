@@ -23,7 +23,10 @@ import ProductDetails from './components/projects/ProductDetails';
 import SignedOutLinks from './components/layout/SignedOutLinks';
 
 var selectedTab;
+
+
 class App extends React.Component {
+  
   render() { 
     return (  
       <BrowserRouter>
@@ -42,6 +45,7 @@ class App extends React.Component {
             <Route path='/project/:id/edit' component={EditProject} />
             <Route path='/profile' component={Profile} />
             <Route path='/products' component={Products} />
+
             <Route path='/cart' component={Cart} curTab={selectedTab}/>
             <Route path='/createorder' component={CreateOrder} />
             <Route path='/showorders' component={showOrders} />

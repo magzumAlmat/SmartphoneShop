@@ -66,20 +66,24 @@ const SignedOutLinks = () => {
         </Navbar.Collapse>
         </Navbar> */}
         
-
-        <Navbar  className='container'  style={{backgroundColor:"#343a40"}}>
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
-        
+        <Container>
+        <Navbar color="dark"  expand="md" >
+        <NavbarBrand href="/">ALCO</NavbarBrand>
+           
           <Collapse navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink to="/signup">РЕГИСТРАЦИЯ</NavLink>
+                </NavItem>
+              
+              <NavItem>
                 <NavLink to="/signin" className="mx-4" >ВХОД</NavLink>
               </NavItem>
           
             </Nav>
           </Collapse>
         </Navbar>
+        </Container>
 
 
         </div>

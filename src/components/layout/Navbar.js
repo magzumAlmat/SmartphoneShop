@@ -32,13 +32,8 @@ const MainNavbar = (props) => {
        
         <div  style={styles.divStyle}> 
             {links}
-            </div>
-        
-       
-           
-              
-   
-         
+        </div>
+  
             </div>
          
     );

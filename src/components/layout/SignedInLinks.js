@@ -30,8 +30,53 @@ class SignedInLinks extends Component{
     render(){
         return (
             <div>
-       
-        
+                <Container>
+        <Navbar color="dark" light expand="md" >
+            <NavbarBrand href="/">ALCO</NavbarBrand>
+            <NavbarToggler />
+          <Collapse navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                 <NavLink to='/showorders' className="mx-4" >Заказы</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink to="/products" className="mx-4">Продукты</NavLink>
+             </NavItem>
+             <NavItem>
+            <NavLink to="/createproduct" className="mx-4">Добавить продукт</NavLink>
+        </NavItem>
+            <a onClick={this.props.signOut} href={() => false} className='mx-2'> Выйти</a>
+         
+                
+                    
+        <NavItem>
+        <NavLink to="/" className="btn btn-floating pink lighten-1 dropdown-trigger mx-4"
+                        data-target='dropdown-profile'>{this.props.profile.initials}
+                    </NavLink>
+        </NavItem>
+                
+                    <ul id="dropdown-profile" className="dropdown-content">
+                     <li><NavLink to='/profile'>Profile</NavLink></li>
+                    </ul>
+              {/* </NavItem>
+
+              <NavLink to="/createproduct" className="mx-4">Добавить продукт</NavLink>
+              <a onClick={this.props.signOut} href={() => false} className='mx-2'> Выйти</a>
+              <NavItem>
+                <NavLink to="/" className="btn btn-floating pink lighten-1 dropdown-trigger mx-4"
+                                data-target='dropdown-profile'>{this.props.profile.initials}
+                            </NavLink>
+                </NavItem>
+                        
+                            <ul id="dropdown-profile" className="dropdown-content">
+                            <li><NavLink to='/profile'>Profile</NavLink></li>
+                            </ul> */}
+                        
+            </Nav>
+          </Collapse>
+        </Navbar>
+        </Container>
+{/*         
         <Navbar className='container' style={{backgroundColor:"#343a40"}} >
         <NavbarBrand href="/">ALCO</NavbarBrand>
         <NavbarToggler />
@@ -61,7 +106,7 @@ class SignedInLinks extends Component{
             </div>
             </Nav>
         </Collapse>
-      </Navbar>
+      </Navbar> */}
 
 
 

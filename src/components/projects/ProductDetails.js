@@ -78,7 +78,7 @@ const ProductDetails = (props) => {
         //         </div>
         //     </div>
 
-        <div className='container'>
+        <>
             <Container>
             <Row>
                 <Col> 
@@ -94,10 +94,10 @@ const ProductDetails = (props) => {
                 <h3>{props.location.myCustomProps.title}</h3>
                 <h5>Категория: {props.location.myCustomProps.Category.label}</h5>
                 {/* <h6>{props.location.myCustomProps.content}</h6> */}
-                <Alert variant="success">
-                    <Alert.Heading>
+                <div variant="success">
+                    <div>
                      <h4>{props.location.myCustomProps.price} &#8376;</h4>
-                    </Alert.Heading>
+                    </div>
                     <h6>
                        1 x {props.location.myCustomProps.title}   
                        
@@ -111,7 +111,7 @@ const ProductDetails = (props) => {
                         Whenever you need to, be sure to use margin utilities to keep things nice
                         and tidy.
                     </p>
-                    </Alert>
+                    </div>
                 <p>
                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
                 ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,
@@ -122,7 +122,7 @@ const ProductDetails = (props) => {
             </Row>
             
             </Container>
-        </div>
+        </>
         
         
 

@@ -8,5 +8,4 @@ function CustomSelect({options,onChange,id}) {
     </div>)
 }
 
-
 export default CustomSelect

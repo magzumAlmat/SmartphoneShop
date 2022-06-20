@@ -4,16 +4,22 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'; 
 // import Select from './Select';
 // import Select from "react-select";
-import CustomSelect from './Select'
+import CustomSelect from './SelectPayOption'
 // import { Category } from '@material-ui/icons';
 import {createProductAction} from '..//../store/actions/productActions';
 import firebase from 'firebase';
 import { storage } from '../../config/fbConfig';
 
 const options = [
-    { value: 'vine', label: 'Вино' },
-    { value: 'champagne', label: 'Шампанское' },
-    { value: 'vodka', label: 'Водка' }
+   
+    { value: 'smartphones',  label: 'СМАРТФОНЫ'},
+    { value: 'pads',  label: 'ПЛАНШЕТЫ'},
+    { value: 'notebooks',   label: 'НОУТБУКИ'},
+    { value: 'smart-watches',   label: 'СМАРТ-ЧАСЫ'},
+    { value: 'headphones',   label: 'НАУШНИКИ'},
+    { value: 'accessories', label: 'АКСЕССУАРЫ'},
+    { value: 'technique',   label: 'ТЕХНИКА'},
+
   ]
 
 class CreateProject extends Component {

@@ -18,9 +18,12 @@ import 'firebase/firestore';
 // import firebase  from '..//../config/fbConfig';
 import { createOrderAction } from '../../store/actions/createOrderAction';
 import { useState } from "react";
-import CustomSelect from '../projects/Select';
+import CustomSelect from '../projects/SelectPayOption';
 import { ContactSupportOutlined } from '@material-ui/icons';
+
 class CreateOrder extends Component {
+
+    
     state = {
         selectOptions: [],
         order: [{}],
@@ -33,13 +36,11 @@ class CreateOrder extends Component {
     }
     
     render() {
-     
+        console.log('THIS PROPS ',this.props)
         const options = [
-            
             { label: 'Перевести Курьеру', value: 'transfer' },
             { label: 'Оплатить Курьеру наличными', value: 'cash' },
-            
-          ]
+        ]
 
           
           const {cartItems}=this.props.location.params;
@@ -66,15 +67,12 @@ class CreateOrder extends Component {
                 this.state.order.clientPhone=this.state.phone
                 this.state.order.clientAddress=this.state.adress
                 this.state.order.clientComment=this.state.comment
-                
-                
+                                
                 this.state.order.ostalosTovara=Number(cartItems.Qty)-Number(this.state.qty)
                 this.props.createOrderAction(this.state)
                 alert('Ваш заказ успешно добавлен! Скоро с вами свяжется оператор.')
                     //console.log('totalAmount',this.props.location.params.totalPrice)
                 this.props.history.push('/showorders');
-    
-                
             }
     
            const onChangeInput=(value,e)=> {
@@ -144,7 +142,7 @@ class CreateOrder extends Component {
                             <tbody>
                                 <tr key={uuid()}>
                                 
-                                <td><Media>
+                                <td><div>
                                         <img
                                             width={64}
                                             height={64}
@@ -152,11 +150,11 @@ class CreateOrder extends Component {
                                             src={item.picture}
                                             alt="Generic placeholder"
                                         />
-                                        <Media.Body>
+                                        <div>
                                             <h5>{item.name}</h5>
                                            
-                                        </Media.Body>
-                                    </Media>
+                                        </div>
+                                    </div>
                                 </td>
                                 
                                

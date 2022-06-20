@@ -9,6 +9,11 @@ import CloseIcon from '@material-ui/icons/Close';
 import { Link } from 'react-router-dom';
 import { showCart } from '../../store/actions/cartActions';
 import PropTypes from 'prop-types';
+import {Col} from 'reactstrap'
+import { Card, CardImg, CardText, CardBody,CardLink,
+  CardTitle, CardSubtitle, Button } from 'reactstrap';
+
+
 const styles = theme => ({
   // close: {
   //   width: theme.spacing.unit * 4,
@@ -63,22 +68,25 @@ class Product extends Component {
  
     return (
    
-      <div className="col-sm-6 col-md-4">
+      <>
            
         
        {/* <p className="category">{product}</p> */}
          {/* {product.Category.value === 'vodka'  } */}
-        <div className="card">
-          <img
+       
+       <Col xs='4'>
+       <Card>
+          <CardImg top
+          style={{'width':'18rem'}}
             className="card-img-top img-fluid "
             src={product.url}
             alt={product.name}
            
           />
-          <div className="card-body">
-            <p>{product.Category.value}</p>
-            <h6 className="card-title">{product.name}</h6>
-            <p className="price">{product.price} T</p>
+          <CardBody>
+          <CardTitle>{product.Category.value}</CardTitle>
+          <CardSubtitle>{product.name}</CardSubtitle>
+          <CardText className="price">{product.price} T</CardText>
 
             {/* <ul className="colors">
               <li>Colors:</li>
@@ -93,12 +101,16 @@ class Product extends Component {
                 <li key={uuid()}>{size}</li>
               ))}
             </ul> */}
-            <div className="text-center">
-              <button
+            
+            <CardText className="text-center">
+             
+
+            </CardText>
+            <Button
                 className="btn-custom"
                 onClick={this.addClick.bind(this, product)}>
                 Add to cart
-              </button>
+              </Button>
              
               {/* <Link to={'/product/' + product.id} key={product.id} params={this.product}>
                 <button>  Подробнее </button>
@@ -110,12 +122,15 @@ class Product extends Component {
                     myCustomProps: product
                 }
             }>
-                   <button>  Подробнее </button>
+                   <Button  className="btn-custom">  Подробнее </Button>
             </Link>
 
-            </div>
-          </div>
-        </div>
+
+          
+
+            
+          </CardBody>
+        </Card>
         <Snackbar
           anchorOrigin={{
             vertical: 'bottom',
@@ -140,7 +155,8 @@ class Product extends Component {
             </IconButton>
           ]}
         />
-      </div>
+        </Col>
+      </>
     );
   }
 }
