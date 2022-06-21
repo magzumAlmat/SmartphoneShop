@@ -65,7 +65,7 @@ class Product extends Component {
     const { classes } = this.props;
     console.log('categorys',product.Category.value)
     
- 
+    
     return (
    
       <>

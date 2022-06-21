@@ -16,14 +16,14 @@ import { Select } from '@material-ui/core';
 
 
 
-
 class Products extends Component {
   state = {
     products: [],
     pageOfItems: [],
     pickedCategory:'champagne',
     output:[],
-    fruit: "banana",
+    filterSmartphone :[],
+    newArray:[]
   
   };
 
@@ -49,14 +49,57 @@ handleChange(e) {
     console.log(e.target.value)
  
     this.setState({ pickedCategory: e.target.value})
-   
 
-   
-    
-  
  
   }
+  
  
+
+
+  getFilteredProducts( pickedCategory) {
+  
+    const filter = this.props.filter;
+    console.log(this.state.pageOfItems)
+
+  
+                            
+    console.log('------------------------------------------')
+    console.log('вывод ',(this.state.pageOfItems))
+    console.log('------------------------------------------')
+
+    
+    const filteredProducts = this.state.pageOfItems.map(obj => {
+        
+    const filtered = Object.values(obj.Category.value)
+      
+       
+
+       
+        let concatedArray=[]
+        let buffer=''
+        // console.log('Filtered до цикла  ', filtered)
+       
+        buffer = filtered.join('')
+        concatedArray.push(buffer,obj)
+
+        // console.log('buffer ',buffer)
+        // console.log('obj',obj)
+        console.log('type ',typeof this.state.pickedCategory)
+        if (buffer===this.state.pickedCategory.toString()){
+          this.state.newArray.push(concatedArray[1])
+          console.log('GG '  ,this.state.newArray)}
+        
+        if (filtered.length === 0) return null;
+
+      
+    
+      })
+      return  <Product product={this.state.newArray}   />;
+  }
+
+
+
+
 
 // checkOutput=()=>{
   
@@ -96,15 +139,14 @@ handleChange(e) {
   // }
 
 
-
   render(state) {
     this.setState(state)
     const { products } = this.state;
    
-    const filterSmartphone = products.filter( cat => {
-      return cat.Category === 'smartphones';
-    })
-    console.log('this state Products.js',this.state)
+    // const smartPhone = input.filter(isSmartphone);
+    const { buhalovka, filter } = this.props;
+    // const even = this.state.pageOfItems.filter(isSmartphone(this.state.pageOfItems.Category));
+    // console.log('Проверка на смартфон ',this.state.pageOfItems.Category)
 
     if (products.length > 0) {
       return (
@@ -122,16 +164,16 @@ handleChange(e) {
                     <NavLink value="notebooks">НОУТБУКИ</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink href="#">СМАРТ-ЧАСЫ</NavLink>
+                    <NavLink value="smartwatches">СМАРТ-ЧАСЫ</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink href="#">НАУШНИКИ</NavLink>
+                    <NavLink href="headphones">НАУШНИКИ</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink href="#">АКСЕССУАРЫ</NavLink>
+                    <NavLink href="accessoires">АКСЕССУАРЫ</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink href="#">ТЕХНИКА</NavLink>
+                    <NavLink href="technique">ТЕХНИКА</NavLink>
                   </NavItem>
                 
                 </Nav>
@@ -151,16 +193,13 @@ handleChange(e) {
            
            
 
-           {console.log('this.state.pickedCategory',this.state.pickedCategory)}
-           <If condition={this.state.pickedCategory ==='smartphone'}>
+           {/* {console.log('this.state.pickedCategory',this.state.pickedCategory)} */}
+           
+           {/* <If condition={this.state.pickedCategory ==='smartphone'}>
             <Then>
-             
-             { this.state.pageOfItems.filter(taskk => taskk.Category === this.state.pickedCategory)
-                     .map(task => 
-                       console.log('TASK -----   ', task),
-                       
-                       ) 
-                   }
+           
+  
+
             </Then>
             <ElseIf condition={this.state.pickedCategory ==='champagne'}>
             <p>Рендерим ШАМПАНСКОЕ</p>
@@ -168,43 +207,62 @@ handleChange(e) {
             <Else>
               <p>НИЧЕ НЕ РЕНДЕРИМ </p>
             </Else>
-          </If>
+          </If> */}
      
+ 
+            { this.state.pickedCategory ==='smartphone' ?  
+            // 'Cмартфон'
+            this.getFilteredProducts()
+          
 
 
-
-
-            { this.state.pickedCategory ==='smartphone' ?  'YES SMARTPHONE'
-
-                // <p>
-                //  { 
-                //    this.state.pageOfItems
-                //     .filter(task => task.Category === this.state.pickedCategory)
-                //     .map(task => 
-                //       console.log('TASK -----   ', task)) 
-                //   }
-                // </p>
-           
-
-              :this.state.pickedCategory ==='champagne' ?
+            //  this.state.pageOfItems.filter(isSmartphone(this.state.pageOfItems))
+            // .map((products)=>(
               
-              this.state.pageOfItems.filter(product => product.Category === 'champagne').map(filteredData=>(
-                console.log('filtered Data',filteredData)
-                // <Product product={filteredData} key={filteredData.id} value={'smartphone'} />
-                ))
+            //     <Product product={products}   />
+               
+              
+            // ))
 
-              :this.state.pickedCategory ==='notebooks' ? "Ноутбуки" 
-              :this.state.pickedCategory ==='pads' ? "Планшеты" 
+
+            
+            //   .map((product, ind) =>
+            //     <div key={ind}>
+            //       {product.category}
+            //       {Object.values(product.products).map(name => <li>{name}</li>)}
+            //     </div>
+            //   )
+            
+            
+          
+            
+
+            :this.state.pickedCategory ==='champagne' ?
+              
+            this.getFilteredProducts()
+
+              :this.state.pickedCategory ==='notebooks' ? this.getFilteredProducts()
+              :this.state.pickedCategory ==='pads' ?  this.getFilteredProducts()
+              :this.state.pickedCategory ==='smartwatches' ? this.getFilteredProducts()
+              :this.state.pickedCategory ==='headphones' ?  this.getFilteredProducts()
+              :this.state.pickedCategory ==='accessoires' ? this.getFilteredProducts()
+              :this.state.pickedCategory ==='technique' ?  this.getFilteredProducts()
+              
+              
+              
+              
+              
+              
+              
+              
               : "Other"
             }
+
+
+
+
      
-
-                
-              
-             
-              
-
-                <Pagination items={products} onChangePage={this.onChangePage} />
+            <Pagination items={products} onChangePage={this.onChangePage} />
             
             </Row>
           </Col>
@@ -217,6 +275,7 @@ handleChange(e) {
     }
   }
 }
+
 
 Products.propTypes = {
   firestore: PropTypes.object.isRequired,
