@@ -42,45 +42,72 @@ class Products extends React.Component {
     
   }
  
-  getFilteredProducts(pickedCategory) {
-    console.log('Я внутри getFilteredProduycts------------------------------------------')
-    console.log(' '  ,this.state.pickedCategory)
+  // getFilteredProducts(pickedCategory) {
+  //   console.log('Я внутри getFilteredProduycts------------------------------------------')
+  //   console.log(' '  ,this.state.pickedCategory)
    
   
-    const filter = this.props.filter;
+  //   const filter = this.props.filter;
   
-    console.log(this.state.pageOfItems)
+  //   console.log(this.state.pageOfItems)
                             
+  //   // console.log('------------------------------------------')
+  //   // console.log('вывод ',(this.state.pageOfItems))
+  //   // console.log('------------------------------------------')
+
+  //   const filteredProducts = this.state.pageOfItems.map(obj => {
+  //   const filtered = Object.values(obj.Category.value)
+  //       let concatedArray=[]
+  //       let buffer=''
+  //       // console.log('Filtered до цикла  ', filtered)
+        
+  //       if (!filtered==null){   
+  //         console.log('filtered is null', filtered)  
+       
+  //       }
+  //       else{ buffer = filtered.join('')}
+       
+  //       concatedArray.push(buffer,obj)
+
+  //       // console.log('buffer ',buffer)
+  //       // console.log('obj',obj)
+
+  //       console.log('  pickedCategory  ---- ', this.state.pickedCategory)
+  //       if (buffer===this.state.pickedCategory.toString()){
+  //         this.state.newArray.push(concatedArray[1])
+  //         console.log('GG '  ,this.state.newArray)}
+     
+  //       if (filtered.length === 0) return null;
+  //     })
+      
+  
+  getFilteredProducts(pickedCategory) {
+    this.state.newArray=[];
+    const filter = this.props.filter;
+    // console.log(this.state.pageOfItems)
     // console.log('------------------------------------------')
     // console.log('вывод ',(this.state.pageOfItems))
     // console.log('------------------------------------------')
-
     const filteredProducts = this.state.pageOfItems.map(obj => {
     const filtered = Object.values(obj.Category.value)
-        let concatedArray=[]
-        let buffer=''
-        // console.log('Filtered до цикла  ', filtered)
-        
-        if (!filtered==null){   
-          console.log('filtered is null', filtered)  
-       
-        }
-        else{ buffer = filtered.join('')}
-       
-        concatedArray.push(buffer,obj)
-
-        // console.log('buffer ',buffer)
-        // console.log('obj',obj)
-
-        console.log('  pickedCategory  ---- ', this.state.pickedCategory)
-        if (buffer===this.state.pickedCategory.toString()){
+    let concatedArray=[]
+    let buffer=''
+    // console.log('Filtered до цикла  ', filtered)
+    buffer = filtered.join('')
+    concatedArray.push(buffer,obj)
+    // console.log('buffer ',buffer)
+    // console.log('obj',obj)
+    console.log('3 pickedCategory is ',pickedCategory)
+    if (buffer===this.state.pickedCategory.toString()){
           this.state.newArray.push(concatedArray[1])
-          console.log('GG '  ,this.state.newArray)}
-     
-        if (filtered.length === 0) return null;
-      })
-      
-
+          console.log('4 NewArray -  '  ,this.state.newArray)}
+    
+    
+    
+    // if (newArray.length === 0) return <p>Выберите категорию товара</p>;
+})
+    
+   
 
       return  <>
       {this.state.newArray.map(product => (
@@ -90,6 +117,9 @@ class Products extends React.Component {
  
 
   }
+
+
+  
   componentDidMount(){
     this.setState({pickedCategory: [] })
               
