@@ -9,7 +9,9 @@ import Pagination from './Pagination';
 import Spinner from '../layout/Spinner';
 import moment from 'moment';
 import {Table} from 'reactstrap'
-class showOrders extends Component {
+
+
+class showOrders extends React.Component {
     state = {
       orders: [],
       pageOfItems: []

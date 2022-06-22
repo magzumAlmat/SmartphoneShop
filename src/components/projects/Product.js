@@ -9,11 +9,10 @@ import CloseIcon from '@material-ui/icons/Close';
 import { Link } from 'react-router-dom';
 import { showCart } from '../../store/actions/cartActions';
 import PropTypes from 'prop-types';
+
 import {Col} from 'reactstrap'
 import { Card, CardImg, CardText, CardBody,CardLink,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
-
-
 const styles = theme => ({
   // close: {
   //   width: theme.spacing.unit * 4,
@@ -25,8 +24,6 @@ class Product extends Component {
   state = {
     open: false
   };
-
-
   addClick = product => {
     this.setState({ open: true });
     const { addItem } = this.props;
@@ -62,20 +59,58 @@ class Product extends Component {
 
   
 
-  render(props) {
+  render() {
     const { product } = this.props;
     const { classes } = this.props;
-    console.log('categorys',this.props)
+    // console.log('categorys',product.Category.value)
     
-    
+ 
     return (
-    <>
-         {/* <p className="category">{product}</p> */}
-         {/* {product.Category.value === 'vodka'  } */}
-       
-       <Col xs='4'>
-       <Card>
-        {product}
+   
+      <>
+           
+        
+{/*      
+        <div className="card">
+          <img
+            className="card-img-top img-fluid "
+            src={product.url}
+            alt={product.name}
+           
+          />
+          <div className="card-body">
+            <p>{product.Category.value}</p>
+            <h6 className="card-title">{product.name}</h6>
+            <p className="price">{product.price} T</p>
+
+            
+            <div className="text-center">
+              <button
+                className="btn-custom"
+                onClick={this.addClick.bind(this, product)}>
+                Add to cart
+              </button>
+             
+           
+
+              <Link to={
+                { 
+                    pathname: "/product/" + this.props.product.Id,
+                    myCustomProps: product
+                }
+            }>
+                   <button>  Подробнее </button>
+            </Link>
+
+            </div>
+          </div>
+        </div>
+ */}
+
+
+<Col>
+        <Card>
+        {/* {product} */}
           <CardImg top
           style={{'width':'18rem'}}
             className="card-img-top img-fluid "
@@ -88,20 +123,7 @@ class Product extends Component {
           <CardSubtitle>{product.name}</CardSubtitle>
           <CardText className="price">{product.price} T</CardText>
 
-            {/* <ul className="colors">
-              <li>Colors:</li>
-              {product.colors.map(color => (
-                <li className={`color ${color}`} key={uuid()}>
-                  <p className="sr-only">{color}</p>
-                </li>
-              ))}
-            </ul>
-            <ul className="sizes">
-              {product.sizes.map(size => (
-                <li key={uuid()}>{size}</li>
-              ))}
-            </ul> */}
-            
+                   
             <CardText className="text-center">
              
 
@@ -112,9 +134,7 @@ class Product extends Component {
                 Add to cart
               </Button>
              
-              {/* <Link to={'/product/' + product.id} key={product.id} params={this.product}>
-                <button>  Подробнее </button>
-              </Link> */}
+            
 
               <Link to={
                 { 
@@ -127,6 +147,13 @@ class Product extends Component {
 
           </CardBody>
         </Card>
+
+
+
+
+
+
+
         <Snackbar
           anchorOrigin={{
             vertical: 'bottom',
@@ -151,8 +178,9 @@ class Product extends Component {
             </IconButton>
           ]}
         />
-        </Col>
+      </Col>
       </>
+
     );
   }
 }

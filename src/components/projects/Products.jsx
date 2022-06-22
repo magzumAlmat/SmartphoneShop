@@ -212,7 +212,7 @@ handleChange(e) {
  
             <div>{ this.state.pickedCategory ==='smartphone' ? this.getFilteredProducts()
            
-                // 'Cмартфон'
+            // 'Cмартфон'
  
             //  this.state.pageOfItems.filter(isSmartphone(this.state.pageOfItems))
             // .map((products)=>(

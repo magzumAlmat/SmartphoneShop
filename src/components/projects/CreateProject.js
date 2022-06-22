@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'; 
 // import Select from './Select';
 import Select from "react-select";
-import CustomSelect from './SelectPayOption'
+import CustomSelect from './Select'
 import { Category } from '@material-ui/icons';
 
 const colorOptions = [
