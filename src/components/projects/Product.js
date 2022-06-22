@@ -25,6 +25,8 @@ class Product extends Component {
   state = {
     open: false
   };
+
+
   addClick = product => {
     this.setState({ open: true });
     const { addItem } = this.props;
@@ -60,22 +62,20 @@ class Product extends Component {
 
   
 
-  render() {
+  render(props) {
     const { product } = this.props;
     const { classes } = this.props;
-    console.log('categorys',product.Category.value)
+    console.log('categorys',this.props)
     
     
     return (
-   
-      <>
-           
-        
-       {/* <p className="category">{product}</p> */}
+    <>
+         {/* <p className="category">{product}</p> */}
          {/* {product.Category.value === 'vodka'  } */}
        
        <Col xs='4'>
        <Card>
+        {product}
           <CardImg top
           style={{'width':'18rem'}}
             className="card-img-top img-fluid "
@@ -125,10 +125,6 @@ class Product extends Component {
                    <Button  className="btn-custom">  Подробнее </Button>
             </Link>
 
-
-          
-
-            
           </CardBody>
         </Card>
         <Snackbar

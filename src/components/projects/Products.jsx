@@ -30,7 +30,7 @@ class Products extends Component {
 handleChange = this.handleChange.bind(this);
 
 handleChange(e) {
-  console.log("Fruit Selected!!");
+  console.log("Category Selected!!");
   this.setState({ fruit: e.target.value });
 }
 
@@ -59,13 +59,13 @@ handleChange(e) {
   getFilteredProducts( pickedCategory) {
   
     const filter = this.props.filter;
-    console.log(this.state.pageOfItems)
+    // console.log(this.state.pageOfItems)
 
   
                             
-    console.log('------------------------------------------')
-    console.log('вывод ',(this.state.pageOfItems))
-    console.log('------------------------------------------')
+    // console.log('------------------------------------------')
+    // console.log('вывод ',(this.state.pageOfItems))
+    // console.log('------------------------------------------')
 
     
     const filteredProducts = this.state.pageOfItems.map(obj => {
@@ -210,12 +210,10 @@ handleChange(e) {
           </If> */}
      
  
-            { this.state.pickedCategory ==='smartphone' ?  
-            // 'Cмартфон'
-            this.getFilteredProducts()
-          
-
-
+            <div>{ this.state.pickedCategory ==='smartphone' ? this.getFilteredProducts()
+           
+                // 'Cмартфон'
+ 
             //  this.state.pageOfItems.filter(isSmartphone(this.state.pageOfItems))
             // .map((products)=>(
               
@@ -224,22 +222,14 @@ handleChange(e) {
               
             // ))
 
-
-            
             //   .map((product, ind) =>
             //     <div key={ind}>
             //       {product.category}
             //       {Object.values(product.products).map(name => <li>{name}</li>)}
             //     </div>
             //   )
-            
-            
-          
-            
-
-            :this.state.pickedCategory ==='champagne' ?
-              
-            this.getFilteredProducts()
+  
+            :this.state.pickedCategory ==='champagne' ?this.getFilteredProducts()
 
               :this.state.pickedCategory ==='notebooks' ? this.getFilteredProducts()
               :this.state.pickedCategory ==='pads' ?  this.getFilteredProducts()
@@ -247,16 +237,10 @@ handleChange(e) {
               :this.state.pickedCategory ==='headphones' ?  this.getFilteredProducts()
               :this.state.pickedCategory ==='accessoires' ? this.getFilteredProducts()
               :this.state.pickedCategory ==='technique' ?  this.getFilteredProducts()
-              
-              
-              
-              
-              
-              
-              
+    
               
               : "Other"
-            }
+            }</div>
 
 
 
